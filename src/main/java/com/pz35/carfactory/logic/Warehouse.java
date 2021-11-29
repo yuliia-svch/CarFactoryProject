@@ -1,15 +1,16 @@
 package com.pz35.carfactory.logic;
 
-import com.pz35.carfactory.entities.*;
+
+import com.pz35.carfactory.entities.CarDetail;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Warehouse<T extends CarDetail>{
-    Boolean changed;
+public class Warehouse<T extends CarDetail> {
+    private Boolean changed;
 
-    Integer maxSize;
+    private Integer maxSize;
     private final List<T> storage = Collections.synchronizedList(new ArrayList<>());
 
 

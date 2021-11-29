@@ -4,7 +4,6 @@ import com.pz35.carfactory.entities.Accessory;
 import com.pz35.carfactory.entities.Car;
 import com.pz35.carfactory.entities.CarBody;
 import com.pz35.carfactory.entities.Engine;
-import com.pz35.carfactory.threadpool.ThreadPool;
 
 public class CarDirector {
     Warehouse<Accessory> accessoryStorage;
@@ -36,8 +35,7 @@ public class CarDirector {
                        Warehouse<Engine> ew,
                        Warehouse<CarBody> bw,
                        CarWarehouse cw,
-                       long waitTime,
-                       ThreadPool tp) {
+                       long waitTime) {
         accessoryStorage = aw;
         engineStorage = ew;
         bodyStorage = bw;
