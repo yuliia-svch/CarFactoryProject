@@ -24,6 +24,23 @@ public class ThreadPool extends Thread{
             threads.add(null);
         }
     }
+    class NotifyThreadEndedCommand implements Runnable {
+        int threadIndex;
+
+        public NotifyThreadEndedCommand(int index) {
+            threadIndex = index;
+        }
+
+        @Override
+        public void run() {
+            try {
+                threads.get(threadIndex).join();
+                availableThreads.add(threadIndex);
+            } catch (InterruptedException e) {
+                shouldStop = true;
+            }
+        }
+    }
 
     public int getSize() {
         return size;
