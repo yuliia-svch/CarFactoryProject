@@ -20,7 +20,6 @@ public class CarWarehouse {
 
     private CarWarehouse(){
         carList = new ArrayList<>();
-        //INSTANCE = new CarWarehouse();
     }
 
     public static CarWarehouse getINSTANCE() {
