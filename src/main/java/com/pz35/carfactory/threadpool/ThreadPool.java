@@ -6,6 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ThreadPool extends Thread{
     private int size;
+    long waitTime = 500;
     private ArrayList<Thread> threads;
     private BlockingQueue<Runnable> threadsQueue;
     ArrayList<Integer> availableThreads = new ArrayList<>();
@@ -39,6 +40,50 @@ public class ThreadPool extends Thread{
             } catch (InterruptedException e) {
                 shouldStop = true;
             }
+        }
+    }
+
+    public synchronized void enqueue(Runnable r) {
+        synchronized (this.threadsQueue) {
+            this.threadsQueue.add(r);
+        }
+    }
+
+    public Runnable dequeue() {
+        return this.threadsQueue.poll();
+    }
+
+    @Override
+    public void run() {
+        while (!shouldStop) {
+            Runnable r = dequeue();
+            if (r != null) {
+                while (availableThreads.isEmpty()) {
+                    synchronized (Thread.currentThread()) {
+                        try {
+                            Thread.currentThread().wait(waitTime);
+                        } catch (InterruptedException e) {
+                            shouldStop = true;
+                        }
+                    }
+                }
+
+                int i = availableThreads.get(0);
+                threads.set(i, new Thread(r));
+                threads.get(i).start();
+                Thread waitThread = new Thread(new NotifyThreadEndedCommand(i));
+                waitThread.start();
+
+            } else {
+                synchronized (Thread.currentThread()) {
+                    try {
+                        Thread.currentThread().wait(waitTime);
+                    } catch (InterruptedException e) {
+                        shouldStop = true;
+                    }
+                }
+            }
+
         }
     }
 
