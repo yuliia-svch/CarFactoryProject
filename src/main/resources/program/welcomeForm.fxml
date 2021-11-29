@@ -69,12 +69,17 @@
                         <Font name="Bell MT Bold" size="23.0" />
                      </font></Label>
 
-                        <Spinner fx:id="dealerSpeed" editable="true" initialValue="1" layoutX="545.0" layoutY="598.0" prefHeight="26.0" prefWidth="223.0" />
+                        <Spinner fx:id="dealerSpeed" editable="true" initialValue="1" layoutX="545.0" layoutY="616.0" prefHeight="26.0" prefWidth="223.0" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../arrow.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="568.0" layoutY="588.0" prefHeight="18.0" prefWidth="177.0" text="SPEED OF DELIVERING" textFill="#aeff00">
+                     <font>
+                        <Font name="Bell MT Bold" size="15.0" />
+                     </font>
+                  </Label>
 
                     </children>
                 </AnchorPane>
