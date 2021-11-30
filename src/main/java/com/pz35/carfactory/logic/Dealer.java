@@ -1,6 +1,7 @@
 package com.pz35.carfactory.logic;
 
 import com.pz35.carfactory.entities.Car;
+import com.pz35.carfactory.logger.Logger;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class Dealer extends Thread{
         id = getFreeId();
         this.waitTime = waitTime;
         carWarehouse = cs;
+        Logger.getInstance().writeLog("Dealer " + id + " created.");
     }
 
     public void run() {

@@ -5,6 +5,7 @@ import com.pz35.carfactory.entities.Accessory;
 import com.pz35.carfactory.entities.Car;
 import com.pz35.carfactory.entities.CarBody;
 import com.pz35.carfactory.entities.Engine;
+import com.pz35.carfactory.logger.Logger;
 import com.pz35.carfactory.logic.AppInitializer;
 import com.pz35.carfactory.logic.AppRunner;
 
@@ -20,6 +21,7 @@ public class Service {
 
         appRunner = new AppRunner(new AppInitializer(3000, configurator.GetStorageSize(), configurator.GetDealersCount(), configurator.GetProvidersCount(), configurator.GetCollectorsCount()));
         appRunner.start();
+        Logger.getInstance().writeLog("App started. Runner initialized.");
     }
 
     public static Service getInstance() {

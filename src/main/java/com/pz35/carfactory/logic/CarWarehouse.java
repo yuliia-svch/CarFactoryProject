@@ -2,6 +2,7 @@ package com.pz35.carfactory.logic;
 
 
 import com.pz35.carfactory.entities.Car;
+import com.pz35.carfactory.logger.Logger;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class CarWarehouse {
 
     public void addCar(Car car){
         carList.add(car);
+        Logger.getInstance().writeLog("Car " + car.getId() + " added to the warehouse.");
     }
 
     public Car getCar(Integer id){
@@ -41,6 +43,7 @@ public class CarWarehouse {
                 .orElseThrow(() -> new RuntimeException("Car " + id + " was not found")));
 
         carList.remove(objCar.get());
+        Logger.getInstance().writeLog("Car " + objCar.get().getId() + " removed from the warehouse.");
         return objCar.get();
     }
     public boolean tryGet() {

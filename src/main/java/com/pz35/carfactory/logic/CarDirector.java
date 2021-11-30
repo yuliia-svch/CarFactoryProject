@@ -4,6 +4,7 @@ import com.pz35.carfactory.entities.Accessory;
 import com.pz35.carfactory.entities.Car;
 import com.pz35.carfactory.entities.CarBody;
 import com.pz35.carfactory.entities.Engine;
+import com.pz35.carfactory.logger.Logger;
 import com.pz35.carfactory.threadpool.ThreadPool;
 
 import java.time.LocalDateTime;
@@ -34,6 +35,7 @@ public class CarDirector extends Thread{
                         .id(Car.getAvailableId())
                         .build();
                 carStorage.addCar(car);
+                Logger.getInstance().writeLog("Car " + car.getId() + " created.");
             }
         }
     }
