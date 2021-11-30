@@ -8,7 +8,7 @@ import com.pz35.carfactory.threadpool.ThreadPool;
 
 import java.time.LocalDateTime;
 
-public class CarDirector {
+public class CarDirector extends Thread{
     private Warehouse<Accessory> accessoryStorage;
     private Warehouse<Engine> engineStorage;
     private Warehouse<CarBody> bodyStorage;
