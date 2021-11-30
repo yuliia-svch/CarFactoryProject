@@ -6,7 +6,9 @@ import com.pz35.carfactory.entities.CarBody;
 import com.pz35.carfactory.entities.Engine;
 import com.pz35.carfactory.threadpool.ThreadPool;
 
-public class CarDirector {
+import java.time.LocalDateTime;
+
+public class CarDirector extends Thread{
     private Warehouse<Accessory> accessoryStorage;
     private Warehouse<Engine> engineStorage;
     private Warehouse<CarBody> bodyStorage;
@@ -28,6 +30,8 @@ public class CarDirector {
                         .engine(engineStorage.get())
                         .accessory(accessoryStorage.get())
                         .body(bodyStorage.get())
+                        .creationTime(LocalDateTime.now())
+                        .id(Car.getAvailableId())
                         .build();
                 carStorage.addCar(car);
             }
