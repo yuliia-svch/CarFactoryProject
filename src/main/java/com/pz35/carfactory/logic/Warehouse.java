@@ -20,8 +20,7 @@ public class Warehouse<T extends CarDetail> {
     }
 
     synchronized T get() {
-        T res = storage.remove(0);
-        return res;
+        return storage.remove(0);
     }
 
     synchronized void add(T particle) {
@@ -42,7 +41,7 @@ public class Warehouse<T extends CarDetail> {
         return res;
     }
 
-    public List<T> getStorage() {
+    public List<T> getWarehouse() {
         return storage;
     }
 }

@@ -1,10 +1,17 @@
 package com.pz35.carfactory.logic;
 
+import lombok.Getter;
+
+@Getter
 public class AppRunner extends Thread {
     private AppInitializer appInitializer;
 
-    public AppRunner() {
-        appInitializer = new AppInitializer(3000, 20, 2, 2,1);
+//    public AppRunner() {
+//        appInitializer = new AppInitializer(3000, 20, 2, 2,1);
+//    }
+
+    public AppRunner(AppInitializer appInitializer1){
+        this.appInitializer = appInitializer1;
     }
 
     public void run() {
