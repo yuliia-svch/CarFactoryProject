@@ -7,6 +7,7 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Data
 public class CarWarehouse {
@@ -34,9 +35,15 @@ public class CarWarehouse {
     }
 
     public Car getCar(Integer id){
-        return carList.stream()
+        Optional<Car> objCar = Optional.ofNullable(carList.stream()
                 .filter(c -> Objects.equals(c.getId(), id))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Car " + id + " was not found"));
+                .orElseThrow(() -> new RuntimeException("Car " + id + " was not found")));
+
+        carList.remove(objCar.get());
+        return objCar.get();
+    }
+    public boolean tryGet() {
+        return carList.size() > 0;
     }
 }
