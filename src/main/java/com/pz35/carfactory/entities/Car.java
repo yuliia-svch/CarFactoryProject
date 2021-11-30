@@ -17,7 +17,7 @@ public class Car {
 
     private static Integer lastId = 1;
 
-    private static Integer getAvailableId() {
+    public static Integer getAvailableId() {
         synchronized (lastId) {
             return lastId++;
         }
