@@ -5,6 +5,8 @@ import com.pz35.carfactory.entities.CarDetail;
 
 public class AccessoryFactory implements DetailFactory {
     public CarDetail get() {
-        return new Accessory();
+        CarDetail accessory = new Accessory();
+        log(accessory);
+        return accessory;
     }
 }

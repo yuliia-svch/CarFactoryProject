@@ -3,6 +3,7 @@ package com.pz35.carfactory.logic;
 
 import com.pz35.carfactory.entities.CarDetail;
 import com.pz35.carfactory.factories.DetailFactory;
+import com.pz35.carfactory.logger.Logger;
 
 public class DetailProvider<T extends CarDetail> extends Thread {
     private long waitTime;
@@ -30,8 +31,10 @@ public class DetailProvider<T extends CarDetail> extends Thread {
             }
             synchronized (warehouse) {
                 if (warehouse.tryAdd()) {
-                    warehouse.add((T) factory.get());
+                    T detail = (T) factory.get();
+                    warehouse.add(detail);
                     generatedParticlesCount++;
+                    Logger.getInstance().writeLog("Detail " + detail.getId() + " added to the warehouse by provider.");
                 }
             }
 
