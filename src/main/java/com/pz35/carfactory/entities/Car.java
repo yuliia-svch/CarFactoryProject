@@ -17,15 +17,6 @@ public class Car {
 
     private static Integer lastId = 1;
 
-    public Car(Engine e, CarBody b, Accessory a) {
-        engine = e;
-        body = b;
-        accessory = a;
-        id = getAvailableId();
-        creationTime = LocalDateTime.now();
-        lastId = getAvailableId();
-    }
-
     public static Integer getAvailableId() {
         synchronized (lastId) {
             return lastId++;
